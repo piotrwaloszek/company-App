@@ -68,7 +68,7 @@ router.delete('/employees/:id', async (req, res) => {
     const emp = await(Employee.findById(req.params.id));
     if(emp) {
       await Employee.deleteOne({ _id: req.params.id });
-      res.json({ message: 'OK' });
+      res.json({ message: 'OK', deletedDocument: emp });
     }
     else res.status(404).json({ message: 'Not found...' });
   }

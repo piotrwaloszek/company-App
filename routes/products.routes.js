@@ -68,7 +68,7 @@ router.delete('/products/:id', async (req, res) => {
     const prod = await(Product.findById(req.params.id));
     if(prod) {
       await Product.deleteOne({ _id: req.params.id });
-      res.json({ message: 'OK' });
+      res.json({ message: 'OK', deletedDocument: prod });
     }
     else res.status(404).json({ message: 'Not found...' });
   }
