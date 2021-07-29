@@ -3,6 +3,7 @@ const expect = require('chai').expect;
 const mongoose = require('mongoose');
 
 describe('Employee', () => {
+
     it('should throw an error if "firstName", "lastName", "department" is not passed', () =>{
         const emp = new Employee({});
         emp.validate(err =>{
@@ -31,7 +32,7 @@ describe('Employee', () => {
             const emp = new Employee(employee);
             emp.validate(err => {
                 expect(err.errors).to.exist;
-            })
+            });
         }
     });
 
@@ -40,7 +41,7 @@ describe('Employee', () => {
         emp.validate(err =>{
             expect(err).to.not.exist;
         });
-    })
+    });
 
     after(() => {
         mongoose.models = {};
